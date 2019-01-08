@@ -42,7 +42,7 @@ def main():
 
     # run_test_init()
     # run_test_append_string()
-    run_test_double()
+    # run_test_double()
     # run_test_shrink()
     # run_test_double_then_shrink()
     # run_test_reset()
@@ -105,10 +105,14 @@ class Box(object):
         # ---------------------------------------------------------------------
         if len(contents) <= volume:
             self.contents = contents
+            self.initialc = contents
             self.volume = volume
+            self.initialv = volume
         else:
             self.contents = ''
+            self.initialc = ''
             self.volume = volume
+            self.initialv = volume
 
     def append_string(self, additional_contents):
         """
@@ -208,7 +212,7 @@ class Box(object):
           #                       contents that did NOT fit]
         """
         # ---------------------------------------------------------------------
-        # TODO: 4. Implement and test this function.
+        # DONE: 4. Implement and test this function.
         #     The testing code is already written for you (above).
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -220,7 +224,7 @@ class Box(object):
         # FOR FULL CREDIT, YOUR SOLUTION MUST BE NO MORE THAN
         #    ** TWO **   LINES OF CODE.
         #######################################################################
-        self.append_string(self.contents)
+        return self.append_string(self.contents)
 
     def shrink(self, new_volume):
         """
@@ -269,6 +273,7 @@ class Box(object):
         # IMPORTANT: Write a solution to this problem in pseudo-code,
         # and THEN translate the pseudo-code to a solution.
         # ---------------------------------------------------------------------
+        self.volume = new_volume
 
     def double_then_shrink(self, new_volume):
         """
@@ -322,6 +327,8 @@ class Box(object):
         #    DIFFICULTY:      5
         #    TIME ESTIMATE:   5 minutes.
         # ---------------------------------------------------------------------
+        self.double()
+        self.shrink(new_volume)
 
     def reset(self):
         """
@@ -333,7 +340,7 @@ class Box(object):
           when this Box was constructed.
         """
         # ---------------------------------------------------------------------
-        # TODO: 7. Implement and test this function.
+        # DONE: 7. Implement and test this function.
         #     The testing code is already written for you (above).
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -341,6 +348,8 @@ class Box(object):
         #    DIFFICULTY:      4
         #    TIME ESTIMATE:   5 minutes.
         # ---------------------------------------------------------------------
+        self.volume = self.initialv
+        self.contents = self.initialc
 
     def steal(self, other_box):
         """
